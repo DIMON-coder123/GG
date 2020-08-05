@@ -4,15 +4,20 @@ using namespace std;
 int n[16];
 int minimax(int x,int player)
 {
-    if (player == 1)
+    int rez = 0;
+    if (x >= 8)
     {
-        minimax(n[x/2],2);
+        return n[x];
+    }
+    if (player == 1 )
+    {
+        rez = min(minimax(x*2,2),minimax(x*2+1,2));
     }
     if (player == 2)
     {
-        minimax(n[x/2],1);
+        rez = max(minimax(x*2,1),minimax(x*2+1,1));
     }
-    return minimax(n[1],1);
+    return rez;
 }
 int main()
 {
@@ -22,6 +27,6 @@ int main()
         cin >> n[i];
     }
 
-    cout << minimax(15,1);
+    cout << minimax(1,1);
 
 }
