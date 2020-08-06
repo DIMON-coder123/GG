@@ -8,8 +8,7 @@ pair<int, int> p;
 char winner;
 int x,y;
 string role1,role2;
-
-void paint()
+char paint(table[][n+1])
 {
     for (int i = 1;i <= n;i++)
     {
@@ -23,8 +22,6 @@ void paint()
 
 pair<int, int> bot(char table[][n+1])
 {
-    if (numbermove == 1)
-    {
     if (table[1][1] == 'O')
         {
             p.first = 1;
@@ -52,31 +49,26 @@ pair<int, int> bot(char table[][n+1])
         }
     }
 
-    if (numbermove == 3)
+    if (table[1][1] != 'O')
     {
-        if (table[1][1] != 'O')
-        {
-            p.first = 1;
-            p.second = 1;
-        }
-        else
-        {
-            p.first = 3;
-            p.second = 1;
-        }
+        p.first = 1;
+        p.second = 1;
     }
-    if (numbermove == 5)
+    else
     {
-        if (table[1][3] != 'O')
+        p.first = 3;
+        p.second = 1;
+    }
+
+    if (table[1][3] != 'O')
         {
             p.first = 1;
             p.second = 3;
-        }
-        else
-        {
-            p.first = 3;
-            p.second = 2;
-        }
+    }
+    else
+    {
+        p.first = 3;
+        p.second = 2;
     }
     return p;
 }
